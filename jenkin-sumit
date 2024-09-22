@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     tools {
@@ -27,5 +26,15 @@ pipeline {
                 }
             }
         }
+        
+        stage('Docker Build') {
+            steps {
+                withCredentials([string(credentialsId: 'verma00', variable: 'PASS')]) {
+                sh 'docker login -u verma00 -p ${Pass}'
+                }
+            }
+        }
+
+       
     }
 }
