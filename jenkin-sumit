@@ -51,13 +51,20 @@ pipeline {
             }
 
             post {
+               
+                failure{
+                    echo 'failure'
+                    mail bcc: '', body: 'hii project is failed', cc: '', from: '', replyTo: '', subject: 'project for node', to: 'vermasumeet391@gmail.com'
+                }
                 success {
-                    echo 'success'
-                    mail bcc: '', body: 'hii project is done ', cc: '', from: '', replyTo: '', subject: 'project for node', to: 'vermasumeet391@gmail.com'
+                    echo success
+                    archiveArtifacts artifacts: '**/nodejs/*.json', followSymlinks: false
+              
+                    }
                 }
             }
         }
 
        
     }
-}
+
