@@ -11,3 +11,4 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumeetverma07/simple-java-maven-app-may-24.git']])     
                 }
         }
+}
