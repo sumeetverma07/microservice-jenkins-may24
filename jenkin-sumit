@@ -33,6 +33,27 @@ pipeline {
             sh 'docker login -u verma00 -p ${new}'
             sh 'docker tag node verma00/devops1:latest '
             sh 'docker push verma00/devops1:latest'
+            sh 'docker logout'
+                }
+            }
+        }
+
+
+        stage('Approval') {
+            steps {
+                input 'Approval for production'
+            }
+        } 
+
+        stage('Deployment') {
+            steps {
+                sh 'docker run -d  verma00/devops1:latest'
+            }
+
+            post {
+                success {
+                    echo 'success'
+                    mail bcc: '', body: 'hii project is done ', cc: '', from: '', replyTo: '', subject: 'project for node', to: 'vermasumeet391@gmail.com'
                 }
             }
         }
