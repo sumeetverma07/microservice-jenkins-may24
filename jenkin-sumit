@@ -15,6 +15,14 @@ pipeline {
         stage('Build') {
             steps {
                 dir('cart-microservice-nodejs') {
+                sh 'npm install'
+                    }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('cart-microservice-nodejs') {
                 sh docker build -t node .
                 }
                 
