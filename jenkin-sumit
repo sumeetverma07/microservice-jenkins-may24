@@ -26,8 +26,8 @@ pipeline {
                 }
             }
         }
-        
-        stage('Docker Build') {
+
+        stage('DOCKER PUSH ') {
             steps {
                 withCredentials([string(credentialsId: 'verma00', variable: 'PASS')]) {
                 sh 'docker login -u verma00 -p ${Pass}'
