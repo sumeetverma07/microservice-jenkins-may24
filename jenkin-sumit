@@ -20,14 +20,13 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('MAKE') {
             steps {
                 dir('cart-microservice-nodejs') {
                 sh docker build -t node .
                     }
-                
+            
             }
         }
     }
 }
-
