@@ -11,5 +11,11 @@ pipeline {
         checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sumeetverma07/microservice-jenkins-may24.git']])                
             }
         }
+
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
     }
 }
