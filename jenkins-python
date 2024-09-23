@@ -37,7 +37,7 @@ pipeline {
 
             stage('Deployment') {
             steps {
-                sh 'docker run -d verma00/devops1:latest'
+                sh 'docker ecec -it verma00/devops1:latest'
             }
         }
 
