@@ -29,8 +29,19 @@ pipeline {
             
                 }
             }
+            stage('Approval') {
+            steps {
+                input 'Approval for production'
+                }
+            } 
+
+            stage('Deployment') {
+            steps {
+                sh 'docker run -d  verma00/devops1:latest'
+            }
         }
 
         
     }
+}
 
