@@ -9,12 +9,14 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'docker-hub', url: 'https://github.com/sumeetverma07/microservice-jenkins-may24.git']])                }
             }
 
-            stage('Build') {
+            stage('Docker Build') {
             steps {
-                    sh 'pip install flask -s'
-                
+                dir('wishlist-microservice-python') {
+                    sh 'docker build -t python .'
+                }
             }
         }
+
         
     }
 }
