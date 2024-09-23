@@ -15,8 +15,22 @@ pipeline {
                     sh 'docker build -t python .'
                 }
             }
+    
+        }
+
+            stage('DOCKER PUSH ') {
+            steps {
+                    withCredentials([string(credentialsId: 'verma00', variable: 'pythonp')]) {
+                sh 'docker login -u verma00 -p ${pythonp}'
+                sh 'docker tag python verma00/devops1:latest '
+                sh 'docker push verma00/devops1:latest'
+                sh 'docker logout'
+                }
+            
+                }
+            }
         }
 
         
     }
-}
+
