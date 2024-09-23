@@ -29,19 +29,11 @@ pipeline {
             
                 }
             }
-            stage('Approval') {
-            steps {
-                input 'Approval for production'
-                }
-            } 
-
-            stage('Deployment') {
-            steps {
-                sh 'docker ecec -it verma00/devops1:latest'
-            }
+            
+          
         }
 
         
     }
-}
+
 
