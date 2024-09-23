@@ -12,7 +12,7 @@ pipeline {
             stage('Build') {
             steps {
                 dir('wishlist-microservice-python') {
-                    sh 'sudo apt install flask'
+                    sh 'sudo apt install flask -s'
                 }
             }
         }
