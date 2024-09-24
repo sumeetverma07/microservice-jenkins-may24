@@ -1,4 +1,5 @@
 FROM openjdk 
 WORKDIR /app
 COPY **\target\*.jar
-RUN mvn clean install
+EXPOSE 1001
+CMD ["java", "-jar", "/offers-0.0.1-SNAPSHOT.jar"]
