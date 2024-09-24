@@ -12,19 +12,18 @@ pipeline {
             }
 
         stage('Build') {
+            
             steps {
-                dir('cart-microservice-nodejs') {
+                dir('shoes-microservice-spring-boot') {
                     sh 'mvn clean install'
                 }
+            
             }
         }
 
         stage('Docker Build') {
             steps {
-                dir('offers-microservice-spring-boot') {
                     sh 'docker build -t java .'
-                }
+            
             }
         }
-    }
-}
