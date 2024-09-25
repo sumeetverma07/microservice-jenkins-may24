@@ -1,4 +1,4 @@
-pipeline {
+ pipeline {
     agent any
     tools {
         maven "mvn"
@@ -23,9 +23,48 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                    sh 'docker build -t java .'
+                dir('shoes-microservice-spring-boot') {
+                    sh 'docker build -t java .' 
+                 }
+                    
             
             }
         }
+
+        stage('DOCKER PUSH ') {
+            steps {
+            withCredentials([string(credentialsId: 'verma00', variable: 'new')]) {
+            sh 'docker login -u verma00 -p ${new}'
+            sh 'docker tag node verma00/devops1:latest '
+            sh 'docker push verma00/devops1:latest'
+            sh 'docker logout'
+                }
+            }
+        }
+
+
+        stage('Approval') {
+            steps {
+                input 'Approval for production'
+            }
+        } 
+
+        stage('Deployment') {
+            steps {
+                sh 'docker run -d  verma00/devops1:latest'
+            }
+
+            post {
+               
+                failure{
+                    echo 'failure'
+                    mail bcc: '', body: 'hii project is failed', cc: '', from: '', replyTo: '', subject: 'project for node', to: 'vermasumeet391@gmail.com'
+                }
+                
+                }
+            }
+        }
+
+       
     }
-}
+
