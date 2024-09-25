@@ -13,7 +13,7 @@ pipeline {
          stage('Docker Build') {
             steps {
                 dir('ui-web-app-reactjs') {
-                sh 'docker build -t java'
+                sh 'docker build -t java .'
                     }
                  }
                     
