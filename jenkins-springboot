@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     agent any
     tools {
         maven "mvn"
@@ -35,8 +35,8 @@
             steps {
             withCredentials([string(credentialsId: 'verma00', variable: 'new')]) {
             sh 'docker login -u verma00 -p ${new}'
-            sh 'docker tag node verma00/devops1:latest '
-            sh 'docker push verma00/devops1:latest'
+            sh 'docker tag java verma00/spring:latest '
+            sh 'docker push verma00/spring:latest'
             sh 'docker logout'
                 }
             }
