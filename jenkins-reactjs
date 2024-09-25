@@ -10,14 +10,14 @@ pipeline {
                 }
             }
 
-        stage('Build') {
-            
+         stage('Docker Build') {
             steps {
                 dir('ui-web-app-reactjs') {
-                sh 'npm install'
-            }
+                sh 'docker build -t java'
+                    }
+                 }
+                    
             
             }
         }
     }
-}
