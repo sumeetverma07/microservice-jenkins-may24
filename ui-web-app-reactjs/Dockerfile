@@ -1,20 +1,8 @@
-
-FROM node:19.5.0-alpine
-
-# Set the working directory to /app
+FROM node:14-alpine
 WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
+COPY package.json .
+COPY package-lock.json .
 RUN npm install
-
-# Copy the rest of the application code
 COPY . .
-
-# Expose the port
-EXPOSE 8080
-
-# Set the default command to start the application
+EXPOSE 8090
 CMD ["npm", "start"]
