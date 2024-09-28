@@ -1,6 +1,6 @@
-FROM node:14-alpine
+FROM node:14.21.3-alpine
 WORKDIR /app
-COPY . .
+COPY . . 
 RUN npm install
 COPY . .
 EXPOSE 8090
